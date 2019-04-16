@@ -1,15 +1,19 @@
+function getTokyoTime()
+{
+	var tokyoTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Tokyo"});
+	var startDate = new Date(tokyoTime);
+	return startDate.getTime();
+}
+								
 function kaede_counter(end,message)
 {
 	let days, hours, minutes, seconds;
 	var endDate = new Date(end).getTime();
-
 	var autoUpdate = setInterval(calculate, 1000);
 
 	function calculate()
 	{
-		var startDate = new Date();
-		startDate = startDate.getTime();
-		let timeRemaining = parseInt((endDate - startDate) / 1000);
+		let timeRemaining = parseInt((endDate - getTokyoTime()) / 1000);
 		if (timeRemaining >= 0)
 		{
 			days = parseInt(timeRemaining / 86400);
