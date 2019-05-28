@@ -1,0 +1,20 @@
+ <script>
+	var currentTime = new Date(1559084400 * 1000);
+					
+	function k_formatLocalTime(time) {
+		var localTimeOptions = Intl.DateTimeFormat().resolvedOptions();
+		return time.toLocaleTimeString(
+			localTimeOptions.locale,
+			{
+				timeZone: localTimeOptions.timeZone,
+				hour: '2-digit',
+				minute:'2-digit'
+			}
+		);
+		
+		console.log("Locale: " + localTimeOptions.locale);
+		console.log("TimeZone: " + localTimeOptions.timeZone);
+	};
+	
+	console.log("StartTime: " + k_formatLocalTime(currentTime));
+ </script>
