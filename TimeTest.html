@@ -20,7 +20,7 @@
 				);
 			};
 			
-			document.getElementById("time").innerHTML = k_formatLocalTime(currentTime, localTimeOptions) + "<small> (" + localTimeOptions.timeZone + ")</small>";
+			document.getElementById("time").innerHTML = k_formatLocalTime(currentTime, localTimeOptions) + "<small> (" + localTimeOptions.timeZone + " | " + localTimeOptions.locale + ")</small>";
 			console.log("StartTime: " + k_formatLocalTime(currentTime, localTimeOptions));
 		</script>
 	</body>
