@@ -5,29 +5,23 @@
 		
 		<script type='text/javascript'>
 			var currentTime = new Date(1559084400 * 1000);
-							
-			function k_formatLocalTime(time) {
-				var localTimeOptions = Intl.DateTimeFormat().resolvedOptions();
+			var localTimeOptions = Intl.DateTimeFormat().resolvedOptions();
+			console.log("Locale: " + localTimeOptions.locale);
+			console.log("TimeZone: " + localTimeOptions.timeZone);
+			
+			function k_formatLocalTime(time, timeOptions) {
 				return time.toLocaleTimeString(
-					localTimeOptions.locale,
+					timeOptions.locale,
 					{
-						timeZone: localTimeOptions.timeZone,
+						timeZone: timeOptions.timeZone,
 						hour: '2-digit',
 						minute:'2-digit'
 					}
 				);
-				
-				var currentLocalTime = k_formatLocalTime(currentTime);
-				
-				window.onload = function(){
-					
-					/*"<small>(" + localTimeOptions.timeZone + ")</small>"*/
-				}
-				console.log("Locale: " + localTimeOptions.locale);
-				console.log("TimeZone: " + localTimeOptions.timeZone);
 			};
-			document.getElementById("time").innerHTML = k_formatLocalTime(currentTime);
-			console.log("StartTime: " + k_formatLocalTime(currentTime));
+			
+			document.getElementById("time").innerHTML = k_formatLocalTime(currentTime, localTimeOptions) + "<small> (" + localTimeOptions.timeZone + ")</small>";
+			console.log("StartTime: " + k_formatLocalTime(currentTime, localTimeOptions));
 		</script>
 	</body>
 </html>
