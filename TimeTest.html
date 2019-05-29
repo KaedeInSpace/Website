@@ -1,20 +1,33 @@
- <script>
-	var currentTime = new Date(1559084400 * 1000);
-					
-	function k_formatLocalTime(time) {
-		var localTimeOptions = Intl.DateTimeFormat().resolvedOptions();
-		return time.toLocaleTimeString(
-			localTimeOptions.locale,
-			{
-				timeZone: localTimeOptions.timeZone,
-				hour: '2-digit',
-				minute:'2-digit'
-			}
-		);
+<html>
+	<head></head>
+	<body>
+		<h1>StartTime: <span id="time"></span></h1>
 		
-		console.log("Locale: " + localTimeOptions.locale);
-		console.log("TimeZone: " + localTimeOptions.timeZone);
-	};
-	
-	console.log("StartTime: " + k_formatLocalTime(currentTime));
- </script>
+		<script type='text/javascript'>
+			var currentTime = new Date(1559084400 * 1000);
+							
+			function k_formatLocalTime(time) {
+				var localTimeOptions = Intl.DateTimeFormat().resolvedOptions();
+				return time.toLocaleTimeString(
+					localTimeOptions.locale,
+					{
+						timeZone: localTimeOptions.timeZone,
+						hour: '2-digit',
+						minute:'2-digit'
+					}
+				);
+				
+				var currentLocalTime = k_formatLocalTime(currentTime);
+				
+				window.onload = function(){
+					
+					/*"<small>(" + localTimeOptions.timeZone + ")</small>"*/
+				}
+				console.log("Locale: " + localTimeOptions.locale);
+				console.log("TimeZone: " + localTimeOptions.timeZone);
+			};
+			document.getElementById("time").innerHTML = k_formatLocalTime(currentTime);
+			console.log("StartTime: " + k_formatLocalTime(currentTime));
+		</script>
+	</body>
+</html>
